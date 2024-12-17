@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"meu-projeto-go/bigCalculator"
 	"meu-projeto-go/downloads"
+	"meu-projeto-go/piCalculation"
 	"meu-projeto-go/primes"
 	"meu-projeto-go/webscraper"
 	"os"
@@ -26,8 +28,10 @@ func showMenu() {
 	fmt.Println("Escolha uma opção abaixo:")
 	fmt.Println("1 - Download concorrente")
 	fmt.Println("2 - Cálculo de números primos")
-	fmt.Println("3 - Web Scraping")
-	fmt.Println("4 - Sair")
+	fmt.Println("3 - Calcular PI")
+	fmt.Println("4 - Web Scraping")
+	fmt.Println("5 - Cálculo de grande escala (Big Calculation)") // Nova opção
+	fmt.Println("6 - Sair")
 	fmt.Print("\nDigite sua escolha: ")
 }
 
@@ -55,10 +59,18 @@ func main() {
 			primes.Run()
 			fmt.Println("\n✅ Cálculo de números primos concluído!")
 		case 3:
+			fmt.Println("\n🌐 Executando o exemplo de Pi...")
+			piCalculation.Run()
+			fmt.Println("\n✅ Pi concluído!")
+		case 4:
 			fmt.Println("\n🌐 Executando o exemplo de Web Scraping...")
 			webscraper.Run()
 			fmt.Println("\n✅ Web Scraping concluído!")
-		case 4:
+		case 5:
+			fmt.Println("\n🔢 Executando o cálculo de grande escala (Big Calculation)...")
+			bigCalculator.Run()
+			fmt.Println("\n✅ Cálculo de grande escala concluído!")
+		case 6:
 			fmt.Println("\n👋 Saindo do programa. Até logo!")
 			os.Exit(0)
 		default:
