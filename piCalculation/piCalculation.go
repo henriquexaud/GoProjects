@@ -45,44 +45,37 @@ func repeat(ch rune, count int) []rune {
 func Run() {
 	rand.Seed(time.Now().UnixNano())
 
-	numGoroutines := 100 // Número de goroutines a serem usadas
-	numPoints := 1000000 // Número de pontos por goroutine
+	numGoroutines := 100
+	numPoints := 1000000
 	totalPoints := numGoroutines * numPoints
 
 	var wg sync.WaitGroup
 	results := make(chan int, numGoroutines)
 
-	// Contador para progresso
 	var pointsProcessed int
 
-	// Criar goroutines
 	for i := 0; i < numGoroutines; i++ {
 		wg.Add(1)
 		go func() {
 			calculatePi(numPoints, &wg, results)
 			pointsProcessed += numPoints
-			displayProgress(pointsProcessed, totalPoints) // Exibe o progresso
+			displayProgress(pointsProcessed, totalPoints)
 		}()
 	}
 
-	// Iniciar o tempo
 	startTime := time.Now()
 
-	// Esperar até todas as goroutines terminarem
 	wg.Wait()
 	close(results)
 
-	// Somar os resultados de todas as goroutines
 	var totalInsideCircle int
 	for result := range results {
 		totalInsideCircle += result
 	}
 
-	// Calcular o valor de pi
 	pi := 4.0 * float64(totalInsideCircle) / float64(totalPoints)
 	elapsedTime := time.Since(startTime)
 
-	// Exibir resultados
-	fmt.Printf("\nValor estimado de Pi: %.10f\n", pi) // Exibe Pi com 10 casas decimais
+	fmt.Printf("\nValor estimado de Pi: %.10f\n", pi)
 	fmt.Printf("Tempo de execução: %s\n", elapsedTime)
 }

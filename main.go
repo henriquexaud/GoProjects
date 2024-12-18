@@ -11,9 +11,8 @@ import (
 	"time"
 )
 
-// Limpa a tela do terminal
 func clearScreen() {
-	fmt.Print("\033[H\033[2J") // Funciona na maioria dos terminais
+	fmt.Print("\033[H\033[2J")
 }
 
 func showHeader() {
@@ -30,7 +29,7 @@ func showMenu() {
 	fmt.Println("2 - Cálculo de números primos")
 	fmt.Println("3 - Calcular PI")
 	fmt.Println("4 - Web Scraping")
-	fmt.Println("5 - Cálculo de grande escala (Big Calculation)") // Nova opção
+	fmt.Println("5 - Cálculo de grande escala")
 	fmt.Println("6 - Sair")
 	fmt.Print("\nDigite sua escolha: ")
 }
@@ -67,7 +66,7 @@ func main() {
 			webscraper.Run()
 			fmt.Println("\n✅ Web Scraping concluído!")
 		case 5:
-			fmt.Println("\n🔢 Executando o cálculo de grande escala (Big Calculation)...")
+			fmt.Println("\n🔢 Executando o cálculo de grande escala...")
 			bigCalculator.Run()
 			fmt.Println("\n✅ Cálculo de grande escala concluído!")
 		case 6:
@@ -79,6 +78,6 @@ func main() {
 
 		fmt.Println("Pressione Enter para voltar ao menu principal...")
 		fmt.Scanln()
-		fmt.Scanln() // Aguarda o usuário pressionar Enter
+		fmt.Scanln()
 	}
 }
